@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# med-site - Site Web pour Cabinet Médical (Dr. Martin)
 
-## Getting Started
+## Description
+Ce projet est un site web moderne et accueillant conçu pour le cabinet d'un médecin généraliste, le Dr. Martin. Il vise à offrir une expérience utilisateur fluide et agréable pour les patients, avec des informations claires sur les services, la prise de rendez-vous en ligne et une section d'administration pour la gestion interne.
 
-First, run the development server:
+## Fonctionnalités Clés
+-   **Traduction Complète en Français:** L'intégralité du site est disponible en français pour une meilleure accessibilité et une expérience utilisateur locale.
+-   **Interface Utilisateur Intuitive:** Conception épurée et moderne, optimisée pour une navigation facile et un confort visuel.
+-   **Système de Prise de Rendez-vous:** Les patients peuvent prendre rendez-vous en ligne de manière simple et rapide.
+-   **Panneau d'Administration:** Un tableau de bord sécurisé pour le personnel du cabinet afin de gérer les rendez-vous et les disponibilités.
+-   **Image d'Illustration Intégrée:** Une illustration discrète et bien positionnée sur la page d'accueil pour améliorer l'esthétique générale.
+-   **Tagline Accueillante:** La devise "L'art de soigner, près de chez vous." reflète la philosophie du cabinet, mettant l'accent sur la qualité des soins et la proximité.
+-   **Ajustements UI Récents:** Améliorations de l'espacement des lignes du texte principal et suppression de l'effet de pointeur sur les cartes de services.
+
+## Technologies Utilisées
+-   **Next.js:** Framework React pour le rendu côté serveur, la génération de sites statiques et une performance optimale.
+-   **React:** Bibliothèque JavaScript pour la construction d'interfaces utilisateur interactives.
+-   **Tailwind CSS:** Framework CSS utilitaire pour un style rapide, réactif et hautement personnalisable.
+-   **Prisma:** ORM (Object-Relational Mapper) de nouvelle génération pour interagir avec la base de données de manière sûre et efficace.
+-   **TypeScript:** Langage de programmation typé pour un code plus robuste et maintenable.
+
+## Instructions d'Installation
+Pour configurer et exécuter le projet en local, suivez les étapes ci-dessous :
+
+1.  **Cloner le dépôt :**
+    ```bash
+    git clone https://github.com/promaaa/med-site.git
+    ```
+2.  **Naviguer vers le répertoire du projet :**
+    ```bash
+    cd med-site
+    ```
+3.  **Installer les dépendances :**
+    ```bash
+    npm install
+    # ou
+    yarn install
+    ```
+
+## Lancement du Projet
+Pour lancer le serveur de développement :
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Ouvrez votre navigateur et accédez à `http://localhost:3000` pour voir le site.
