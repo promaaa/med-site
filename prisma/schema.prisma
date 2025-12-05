@@ -15,17 +15,18 @@ model Admin {
 }
 
 model Appointment {
-  id            String   @id @default(cuid())
-  startTime     DateTime
-  endTime       DateTime
-  patientName   String
-  patientEmail  String
-  patientPhone  String
-  reason        String?
-  status        AppointmentStatus @default(CONFIRMED)
-  googleEventId String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id                String   @id @default(cuid())
+  startTime         DateTime
+  endTime           DateTime
+  patientName       String
+  patientEmail      String
+  patientPhone      String
+  reason            String?
+  status            AppointmentStatus @default(CONFIRMED)
+  googleEventId     String?
+  cancellationToken String?  @unique
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 }
 
 model AvailabilitySlot {
@@ -35,6 +36,18 @@ model AvailabilitySlot {
   endTime     String   // Format "HH:mm"
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model Settings {
+  id                        String   @id @default(cuid())
+  googleServiceAccountEmail String?
+  googlePrivateKey          String?  // Encrypted
+  googleCalendarId          String?  @default("primary")
+  workStartHour             Int      @default(9)
+  workEndHour               Int      @default(17)
+  slotDurationMinutes       Int      @default(30)
+  createdAt                 DateTime @default(now())
+  updatedAt                 DateTime @updatedAt
 }
 
 enum AppointmentStatus {

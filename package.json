@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:calendar": "tsx scripts/test-calendar.ts",
+    "check:config": "node scripts/check-config.js",
+    "create:admin": "tsx scripts/create-admin.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -17,7 +20,9 @@
     "@radix-ui/react-popover": "^1.1.15",
     "@radix-ui/react-select": "^2.2.6",
     "@radix-ui/react-slot": "^1.2.4",
+    "@types/bcryptjs": "^2.4.6",
     "@types/pg": "^8.15.6",
+    "bcryptjs": "^3.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
@@ -30,6 +35,7 @@
     "react-day-picker": "^9.11.1",
     "react-dom": "19.2.0",
     "react-hook-form": "^7.66.1",
+    "resend": "^6.5.2",
     "tailwind-merge": "^3.4.0",
     "zod": "^4.1.12"
   },
@@ -42,6 +48,7 @@
     "eslint-config-next": "16.0.3",
     "prisma": "^7.0.0",
     "tailwindcss": "^4",
+    "tsx": "^4.19.2",
     "tw-animate-css": "^1.4.0",
     "typescript": "^5"
   }
