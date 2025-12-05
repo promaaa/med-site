@@ -25,6 +25,7 @@ model Appointment {
   status            AppointmentStatus @default(CONFIRMED)
   googleEventId     String?
   cancellationToken String?  @unique
+  reminderSent      Boolean  @default(false)
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
 }
@@ -46,6 +47,14 @@ model Settings {
   workStartHour             Int      @default(9)
   workEndHour               Int      @default(17)
   slotDurationMinutes       Int      @default(30)
+  // Lunch break settings
+  lunchBreakEnabled         Boolean  @default(true)
+  lunchBreakStart           String   @default("12:00")
+  lunchBreakEnd             String   @default("14:00")
+  // Admin notification email
+  adminEmail                String?
+  // Predefined appointment reasons (JSON array)
+  appointmentReasons        String   @default("[\"Consultation générale\",\"Renouvellement ordonnance\",\"Suivi médical\",\"Vaccination\",\"Certificat médical\",\"Autre\"]")
   createdAt                 DateTime @default(now())
   updatedAt                 DateTime @updatedAt
 }

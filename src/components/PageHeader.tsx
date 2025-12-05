@@ -7,8 +7,8 @@ import ThemeToggle from "./ThemeToggle";
 
 export default function PageHeader() {
     return (
-        <header className="w-full px-6 py-8 flex justify-between items-center border-b border-border/40">
-            <Link href="/" className="text-xl font-bold tracking-tight hover:text-primary transition-colors">
+        <header className="w-full px-4 md:px-6 py-4 md:py-8 flex justify-between items-center border-b border-border/40">
+            <Link href="/" className="text-lg md:text-xl font-bold tracking-tight hover:text-primary transition-colors">
                 DR. MARTIN
             </Link>
             <nav className="hidden md:flex gap-8 text-sm font-medium text-muted-foreground">
@@ -16,7 +16,7 @@ export default function PageHeader() {
                 <Link href="/about" className="hover:text-foreground transition-colors">À Propos</Link>
                 <Link href="/contact" className="hover:text-foreground transition-colors">Contact</Link>
             </nav>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 md:gap-4">
                 <ThemeToggle />
                 <Link href="/book" className="hidden md:block">
                     <Button variant="outline" className="rounded-none border-primary hover:bg-primary hover:text-primary-foreground transition-all">

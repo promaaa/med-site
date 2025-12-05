@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import Link from 'next/link';
+import { XCircle, CheckCircle, Info, AlertTriangle } from 'lucide-react';
 
 type Appointment = {
     id: string;
@@ -68,7 +69,9 @@ export default function CancelAppointmentPage() {
         return (
             <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
                 <div className="max-w-md w-full bg-white rounded-lg shadow-sm border p-8 text-center">
-                    <div className="text-6xl mb-4">❌</div>
+                    <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <XCircle className="w-8 h-8 text-red-600" />
+                    </div>
                     <h1 className="text-2xl font-bold text-gray-900 mb-2">Rendez-vous non trouvé</h1>
                     <p className="text-gray-600 mb-6">
                         Ce lien d'annulation n'est pas valide ou le rendez-vous n'existe plus.
@@ -87,7 +90,9 @@ export default function CancelAppointmentPage() {
         return (
             <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
                 <div className="max-w-md w-full bg-white rounded-lg shadow-sm border p-8 text-center">
-                    <div className="text-6xl mb-4">ℹ️</div>
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Info className="w-8 h-8 text-blue-600" />
+                    </div>
                     <h1 className="text-2xl font-bold text-gray-900 mb-2">Déjà annulé</h1>
                     <p className="text-gray-600 mb-6">
                         Ce rendez-vous a déjà été annulé.
@@ -106,7 +111,9 @@ export default function CancelAppointmentPage() {
         return (
             <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
                 <div className="max-w-md w-full bg-white rounded-lg shadow-sm border p-8 text-center">
-                    <div className="text-6xl mb-4">✅</div>
+                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <CheckCircle className="w-8 h-8 text-green-600" />
+                    </div>
                     <h1 className="text-2xl font-bold text-gray-900 mb-2">Rendez-vous annulé</h1>
                     <p className="text-gray-600 mb-6">
                         Votre rendez-vous a bien été annulé. Un email de confirmation vous a été envoyé.
@@ -127,7 +134,9 @@ export default function CancelAppointmentPage() {
         <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
             <div className="max-w-md w-full bg-white rounded-lg shadow-sm border p-8">
                 <div className="text-center mb-6">
-                    <div className="text-6xl mb-4">⚠️</div>
+                    <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <AlertTriangle className="w-8 h-8 text-yellow-600" />
+                    </div>
                     <h1 className="text-2xl font-bold text-gray-900">Annuler votre rendez-vous</h1>
                     <p className="text-gray-600 mt-2">
                         Êtes-vous sûr de vouloir annuler ce rendez-vous ?

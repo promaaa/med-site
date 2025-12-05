@@ -5,12 +5,14 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { signOut } from "next-auth/react";
 import { useState } from "react";
+import { LayoutDashboard, Calendar, BarChart3, Clock, Settings, LogOut, ExternalLink, Menu, X } from "lucide-react";
 
 const navItems = [
-    { href: "/admin", label: "Tableau de bord", icon: "📊", exact: true },
-    { href: "/admin/calendar", label: "Calendrier", icon: "🗓️" },
-    { href: "/admin/availability", label: "Disponibilités", icon: "📅" },
-    { href: "/admin/settings", label: "Configuration", icon: "⚙️" },
+    { href: "/admin", label: "Tableau de bord", icon: LayoutDashboard, exact: true },
+    { href: "/admin/calendar", label: "Calendrier", icon: Calendar },
+    { href: "/admin/stats", label: "Statistiques", icon: BarChart3 },
+    { href: "/admin/availability", label: "Disponibilités", icon: Clock },
+    { href: "/admin/settings", label: "Configuration", icon: Settings },
 ];
 
 export default function AdminLayout({
@@ -45,7 +47,7 @@ export default function AdminLayout({
                                     : "text-gray-300 hover:bg-gray-800 hover:text-white"
                                     }`}
                             >
-                                <span>{item.icon}</span>
+                                <item.icon className="w-5 h-5" />
                                 <span className="font-medium">{item.label}</span>
                             </div>
                         </Link>
@@ -54,7 +56,7 @@ export default function AdminLayout({
                 <div className="p-4 border-t border-gray-700 space-y-1">
                     <Link href="/">
                         <div className="w-full flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition-colors">
-                            <span>🌐</span>
+                            <ExternalLink className="w-5 h-5" />
                             <span>Voir le site</span>
                         </div>
                     </Link>
@@ -62,7 +64,7 @@ export default function AdminLayout({
                         onClick={() => signOut({ callbackUrl: "/admin/login" })}
                         className="w-full flex items-center gap-3 px-4 py-3 text-red-400 hover:bg-red-900/30 hover:text-red-300 rounded-lg transition-colors"
                     >
-                        <span>🚪</span>
+                        <LogOut className="w-5 h-5" />
                         <span>Déconnexion</span>
                     </button>
                 </div>
@@ -97,7 +99,7 @@ export default function AdminLayout({
                                         : "text-gray-300 hover:bg-gray-800"
                                         }`}
                                 >
-                                    <span>{item.icon}</span>
+                                    <item.icon className="w-5 h-5" />
                                     <span>{item.label}</span>
                                 </div>
                             </Link>
@@ -105,7 +107,7 @@ export default function AdminLayout({
                         <div className="pt-2 border-t border-gray-700 mt-2 space-y-1">
                             <Link href="/" onClick={() => setMobileMenuOpen(false)}>
                                 <div className="w-full flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 rounded-lg">
-                                    <span>🌐</span>
+                                    <ExternalLink className="w-5 h-5" />
                                     <span>Voir le site</span>
                                 </div>
                             </Link>
@@ -113,7 +115,7 @@ export default function AdminLayout({
                                 onClick={() => signOut({ callbackUrl: "/admin/login" })}
                                 className="w-full flex items-center gap-3 px-4 py-3 text-red-400 hover:bg-red-900/30 rounded-lg"
                             >
-                                <span>🚪</span>
+                                <LogOut className="w-5 h-5" />
                                 <span>Déconnexion</span>
                             </button>
                         </div>

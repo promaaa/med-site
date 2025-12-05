@@ -101,7 +101,7 @@ export async function sendConfirmationEmail(data: AppointmentEmailData) {
         <div style="background: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 8px; padding: 15px; margin: 20px 0;">
             <p style="margin: 0; color: #0369a1;">
                 <strong>📍 Adresse :</strong><br>
-                13 place Alphonse Fiquet<br>
+                13, place Alphonse-Fiquet<br>
                 80000 Amiens
             </p>
         </div>
@@ -118,7 +118,7 @@ export async function sendConfirmationEmail(data: AppointmentEmailData) {
     
     <div style="text-align: center; padding: 20px; color: #64748b; font-size: 12px;">
         <p style="margin: 0;">Cabinet Dr. Martin - Médecin Généraliste</p>
-        <p style="margin: 5px 0;">13 place Alphonse Fiquet, 80000 Amiens</p>
+        <p style="margin: 5px 0;">13, place Alphonse-Fiquet, 80000 Amiens</p>
     </div>
 </body>
 </html>

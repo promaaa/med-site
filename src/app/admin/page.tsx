@@ -3,6 +3,7 @@ import AppointmentsList from "@/components/AppointmentsList";
 import Link from "next/link";
 import { format, startOfDay, endOfDay, isToday, isTomorrow, isAfter } from "date-fns";
 import { fr } from "date-fns/locale";
+import { Phone, Mail, Calendar, Download } from "lucide-react";
 
 export const dynamic = 'force-dynamic';
 
@@ -44,16 +45,18 @@ export default async function AdminDashboard() {
                 <div className="flex gap-2">
                     <Link
                         href="/admin/calendar"
-                        className="px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 text-sm font-medium transition-colors"
+                        className="px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 text-sm font-medium transition-colors flex items-center gap-2"
                     >
-                        🗓️ Calendrier
+                        <Calendar className="w-4 h-4" />
+                        Calendrier
                     </Link>
                     <a
                         href="/api/admin/export"
                         download
-                        className="px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 text-sm font-medium transition-colors"
+                        className="px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 text-sm font-medium transition-colors flex items-center gap-2"
                     >
-                        📥 Exporter CSV
+                        <Download className="w-4 h-4" />
+                        Exporter CSV
                     </a>
                 </div>
             </div>
@@ -103,15 +106,17 @@ export default async function AdminDashboard() {
                         <div className="flex gap-2">
                             <a
                                 href={`tel:${nextAppointment.patientPhone}`}
-                                className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors text-sm font-medium"
+                                className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors text-sm font-medium flex items-center gap-2"
                             >
-                                📞 Appeler
+                                <Phone className="w-4 h-4" />
+                                Appeler
                             </a>
                             <a
                                 href={`mailto:${nextAppointment.patientEmail}`}
-                                className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors text-sm font-medium"
+                                className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors text-sm font-medium flex items-center gap-2"
                             >
-                                ✉️ Email
+                                <Mail className="w-4 h-4" />
+                                Email
                             </a>
                         </div>
                     </div>
@@ -145,7 +150,7 @@ export default async function AdminDashboard() {
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <a href={`tel:${appt.patientPhone}`} className="p-2 hover:bg-gray-100 rounded-lg text-gray-600">
-                                        📞
+                                        <Phone className="w-4 h-4" />
                                     </a>
                                     <span className="text-xs font-bold px-3 py-1 bg-green-100 text-green-700 rounded-full">
                                         CONFIRMÉ

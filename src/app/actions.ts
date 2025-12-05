@@ -3,6 +3,7 @@
 import { prisma } from '@/lib/prisma';
 import { listEvents, createEvent, deleteEvent } from '@/lib/googleCalendar';
 import { sendConfirmationEmail, sendCancellationEmail } from '@/lib/email';
+import { sendAdminCancellationNotification } from '@/lib/reminders';
 import { addMinutes, format, parse, isBefore, startOfDay, endOfDay, setHours, setMinutes, addMonths } from 'date-fns';
 import { revalidatePath } from 'next/cache';
 import crypto from 'crypto';
@@ -218,6 +219,18 @@ export async function cancelAppointment(id: string) {
             console.warn('Email error:', error);
         }
 
+        // 4. Notify admin
+        try {
+            await sendAdminCancellationNotification({
+                patientName: appointment.patientName,
+                patientEmail: appointment.patientEmail,
+                startTime: appointment.startTime,
+                reason: appointment.reason,
+            });
+        } catch (error) {
+            console.warn('Admin notification error:', error);
+        }
+
         revalidatePath('/admin');
         return { success: true };
     } catch (error) {
@@ -280,6 +293,18 @@ export async function cancelAppointmentByToken(token: string) {
             });
         } catch (error) {
             console.warn('Email error:', error);
+        }
+
+        // Notify admin
+        try {
+            await sendAdminCancellationNotification({
+                patientName: appointment.patientName,
+                patientEmail: appointment.patientEmail,
+                startTime: appointment.startTime,
+                reason: appointment.reason,
+            });
+        } catch (error) {
+            console.warn('Admin notification error:', error);
         }
 
         return {

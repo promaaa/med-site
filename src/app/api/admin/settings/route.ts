@@ -13,7 +13,13 @@ export async function GET() {
 
         const settings = await prisma.settings.findFirst();
 
-        return NextResponse.json({ settings });
+        // Also return env status (without exposing actual keys)
+        const env = {
+            resendConfigured: !!process.env.RESEND_API_KEY,
+            fromEmail: process.env.FROM_EMAIL || "",
+        };
+
+        return NextResponse.json({ settings, env });
     } catch (error) {
         console.error("Error fetching settings:", error);
         return NextResponse.json({ error: "Internal server error" }, { status: 500 });
@@ -29,20 +35,44 @@ export async function POST(request: Request) {
         }
 
         const body = await request.json();
-        const { googleCalendarId, workStartHour, workEndHour, slotDurationMinutes } = body;
+        const {
+            googleCalendarId,
+            workStartHour,
+            workEndHour,
+            slotDurationMinutes,
+            lunchBreakEnabled,
+            lunchBreakStart,
+            lunchBreakEnd,
+            adminEmail,
+            appointmentReasons,
+        } = body;
 
         // Get or create settings
         let settings = await prisma.settings.findFirst();
 
+        const updateData = {
+            googleCalendarId: googleCalendarId,
+            workStartHour: workStartHour !== undefined ? workStartHour : undefined,
+            workEndHour: workEndHour !== undefined ? workEndHour : undefined,
+            slotDurationMinutes: slotDurationMinutes !== undefined ? slotDurationMinutes : undefined,
+            lunchBreakEnabled: lunchBreakEnabled !== undefined ? lunchBreakEnabled : undefined,
+            lunchBreakStart: lunchBreakStart || undefined,
+            lunchBreakEnd: lunchBreakEnd || undefined,
+            adminEmail: adminEmail !== undefined ? adminEmail : undefined,
+            appointmentReasons: appointmentReasons || undefined,
+        };
+
+        // Remove undefined values
+        Object.keys(updateData).forEach(key => {
+            if (updateData[key as keyof typeof updateData] === undefined) {
+                delete updateData[key as keyof typeof updateData];
+            }
+        });
+
         if (settings) {
             settings = await prisma.settings.update({
                 where: { id: settings.id },
-                data: {
-                    googleCalendarId: googleCalendarId || settings.googleCalendarId,
-                    workStartHour: workStartHour !== undefined ? workStartHour : settings.workStartHour,
-                    workEndHour: workEndHour !== undefined ? workEndHour : settings.workEndHour,
-                    slotDurationMinutes: slotDurationMinutes !== undefined ? slotDurationMinutes : settings.slotDurationMinutes,
-                },
+                data: updateData,
             });
         } else {
             settings = await prisma.settings.create({
@@ -51,6 +81,11 @@ export async function POST(request: Request) {
                     workStartHour: workStartHour || 9,
                     workEndHour: workEndHour || 17,
                     slotDurationMinutes: slotDurationMinutes || 30,
+                    lunchBreakEnabled: lunchBreakEnabled ?? true,
+                    lunchBreakStart: lunchBreakStart || "12:00",
+                    lunchBreakEnd: lunchBreakEnd || "14:00",
+                    adminEmail: adminEmail || null,
+                    appointmentReasons: appointmentReasons || '["Consultation générale","Renouvellement ordonnance","Suivi médical","Vaccination","Certificat médical","Autre"]',
                 },
             });
         }

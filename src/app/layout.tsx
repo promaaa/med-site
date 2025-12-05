@@ -41,7 +41,7 @@ export default function RootLayout({
     "email": "contact@dr-martin.fr",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "13 place Alphonse Fiquet",
+      "streetAddress": "13, place Alphonse-Fiquet",
       "addressLocality": "Amiens",
       "postalCode": "80000",
       "addressCountry": "FR"
@@ -89,6 +89,13 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://dr-martin.fr" />
+        {/* PWA */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#1e40af" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Dr. Martin" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
