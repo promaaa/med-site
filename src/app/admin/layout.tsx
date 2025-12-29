@@ -5,13 +5,14 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { signOut } from "next-auth/react";
 import { useState } from "react";
-import { LayoutDashboard, Calendar, BarChart3, Clock, Settings, LogOut, ExternalLink, Menu, X } from "lucide-react";
+import { LayoutDashboard, Calendar, BarChart3, Clock, Settings, LogOut, ExternalLink, Menu, X, Phone } from "lucide-react";
 
 const navItems = [
     { href: "/admin", label: "Tableau de bord", icon: LayoutDashboard, exact: true },
     { href: "/admin/calendar", label: "Calendrier", icon: Calendar },
     { href: "/admin/stats", label: "Statistiques", icon: BarChart3 },
     { href: "/admin/availability", label: "Disponibilités", icon: Clock },
+    { href: "/admin/assistant", label: "Assistant Vocal", icon: Phone },
     { href: "/admin/settings", label: "Configuration", icon: Settings },
 ];
 
